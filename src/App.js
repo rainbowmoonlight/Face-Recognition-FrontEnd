@@ -44,12 +44,6 @@ class App extends Component {
     this.state = initialState;
   }
 
-  // componentDidMount() {
-  //   fetch('http://localhost:3000/')
-  //     .then(response => response.json())
-  //     .then(console.log)
-  // }
-
   loadUser = (data) => {
     this.setState( {user: {
       id:data.id,
@@ -80,13 +74,12 @@ class App extends Component {
 
   onInputChange = (event) => {
     this.setState({input: event.target.value});
-    // console.log(event.target.value);
+
   }
 
   onButtonSubmit = ()=> {
     this.setState({imageUrl:this.state.input})
-    // console.log('click');
-      fetch('http://localhost:3000/imageurl', {
+      fetch('https://floating-stream-20155.herokuapp.com/imageurl', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -96,7 +89,7 @@ class App extends Component {
       .then(response => response.json())
       .then(response => {
         if(response) {
-          fetch('http://localhost:3000/image', {
+          fetch('https://floating-stream-20155.herokuapp.com/image', {
             method: 'put',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -111,8 +104,6 @@ class App extends Component {
         }
         this.displayFaceBox(this.calculateFaceLocation(response))
       })
-      //console.log(response.outputs[0].data.regions[0].region_info.bounding_box);
-      // do something with response
       .catch(err => console.log(err));
   }
 
