@@ -151,3 +151,6 @@ class App extends Component {
 }
 
 export default App;
+
+
+//check https://smart-facedetector.herokuapp.com/
